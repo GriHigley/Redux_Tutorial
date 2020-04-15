@@ -24,6 +24,30 @@ export const errors = (state=[], action) => {
   }
 }
 
+export const suggestions = (state=[], action) => {
+  switch(action.type){
+    case C.CHANGE_SUGGESTIONS:
+      return action.payload
+    case C.CLEAR_SUGGESTIONS:
+      return []
+    default:
+      return state
+  }
+}
+
+export const fetching = (state=false, action) => {
+  switch(action.type){
+    case C.CANCEL_FETCHING:
+      return false;
+    case C.CHANGE_SUGGESTIONS:
+      return false;
+    case C.FETCH_RESORT_NAMES:
+      return true;
+    default:
+      return state;
+  } 
+}
+
 export const allSkiDays = (state=[], action) => {
 
   switch(action.type) {

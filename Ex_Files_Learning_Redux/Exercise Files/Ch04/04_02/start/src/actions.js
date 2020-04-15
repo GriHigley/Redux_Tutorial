@@ -1,4 +1,5 @@
 import C from './constants'
+import { suggestions } from './store/reducers'
 
 export function addDay(resort, date, powder=false, backcountry=false) {
 
@@ -26,3 +27,21 @@ export const setGoal = (goal) =>
 
 
 
+export const addError = (error) => ({
+	type: C.ADD_ERROR,
+	payload: error
+})
+
+export const clearError = (message) => ({
+	type: C.CLEAR_ERROR,
+	payload: message
+})
+export const changeSuggestions = (newSuggestions) =>
+	({
+		type: C.CHANGE_SUGGESTIONS,
+		payload: newSuggestions
+	})
+
+export const clearSuggestions = () => ({
+	type: C.CLEAR_SUGGESTIONS
+})

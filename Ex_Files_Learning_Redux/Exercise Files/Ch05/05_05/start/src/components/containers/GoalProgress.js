@@ -1,6 +1,22 @@
 import GoalProgress from '../ui/GoalProgress'
+import { connect } from 'react-redux'
+import { setGoal } from '../../actions'
 
-export default () =>
-    <GoalProgress current={10} 
-                  goal={20}
-                  onNewGoal={goal => console.log('todo: change goal', goal)} />
+const mapStateToProps = state => ({
+    goal: state.goal,
+    current : state.allSkiDays.length
+})
+
+const mapDispatchToProps = dispatch => ({
+    onNewGoal(newGoal) {
+        dispatch (
+            setGoal(newGoal)
+        )
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoalProgress)
+// export default () =>
+//     <GoalProgress current={10} 
+//                   goal={20}
+//                   onNewGoal={goal => console.log('todo: change goal', goal)} />
